@@ -1,0 +1,236 @@
+{
+  "last_published": "zadania-otwarte-matematyka-strategia",
+  "posts": {
+    "jak-przygotowac-sie-z-chemii": {
+      "title": "Jak przygotować się do matury z chemii rozszerzonej",
+      "cluster": "B",
+      "category": "PORADNIK",
+      "subjectSlug": "chemia",
+      "publishedAt": "2026-05-22",
+      "wordCount": 2859,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\jak-przygotowac-sie-z-chemii.md",
+      "internalLinksOut": ["jak-przygotowac-sie-do-matury", "jak-przygotowac-sie-z-biologii", "progi-punktacja", "harmonogram-2026", "jak-wyglada-przebiega-matura"],
+      "primaryKeyword": "jak przygotować się do matury z chemii"
+    },
+    "jak-przygotowac-sie-z-biologii": {
+      "title": "Jak przygotować się do matury z biologii rozszerzonej",
+      "cluster": "B",
+      "category": "PORADNIK",
+      "subjectSlug": "biologia",
+      "publishedAt": "2026-05-22",
+      "wordCount": 2814,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\jak-przygotowac-sie-z-biologii.md",
+      "internalLinksOut": ["jak-przygotowac-sie-do-matury", "harmonogram-2026", "progi-punktacja"],
+      "primaryKeyword": "jak przygotować się do matury z biologii"
+    },
+    "jak-przygotowac-sie-z-angielskiego": {
+      "title": "Jak przygotować się do matury z angielskiego (B2/C1)",
+      "cluster": "B",
+      "category": "PORADNIK",
+      "subjectSlug": "angielski",
+      "publishedAt": "2026-05-22",
+      "wordCount": 3279,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\jak-przygotowac-sie-z-angielskiego.md",
+      "internalLinksOut": ["progi-punktacja", "email-formalny-angielski-matura", "rozprawka-angielski-matura", "jak-zdac-mature-2026", "jak-przygotowac-sie-z-polskiego"],
+      "primaryKeyword": "jak przygotować się do matury z angielskiego"
+    },
+    "srodki-stylistyczne-polski": {
+      "title": "Środki stylistyczne na maturze z polskiego — pełna lista z przykładami",
+      "cluster": "F",
+      "category": "PORADNIK",
+      "subjectSlug": "polski",
+      "publishedAt": "2026-05-22",
+      "wordCount": 2619,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\srodki-stylistyczne-polski.md",
+      "internalLinksOut": ["jak-pisac-wypracowanie-maturalne", "progi-punktacja", "ustny-polski-pula-jawna-2026", "jak-przygotowac-sie-z-polskiego"],
+      "primaryKeyword": "środki stylistyczne matura"
+    },
+    "ustny-polski-pula-jawna-2026": {
+      "title": "Pula jawna na ustny z polskiego 2026 — pełna lista pytań + jak się przygotować",
+      "cluster": "A",
+      "category": "STRATEGIA",
+      "subjectSlug": "polski",
+      "publishedAt": "2026-05-22",
+      "wordCount": 3264,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\ustny-polski-pula-jawna-2026.md",
+      "internalLinksOut": ["harmonogram-2026", "progi-punktacja", "jak-przygotowac-sie-z-polskiego", "jak-pisac-wypracowanie-maturalne", "jak-wyglada-przebiega-matura"],
+      "primaryKeyword": "pula jawna ustny polski 2026"
+    },
+    "jak-zdac-mature-2026": {
+      "title": "Jak zdać maturę 2026 — kompletny przewodnik",
+      "cluster": "ORIGINAL",
+      "category": "PORADNIK",
+      "subjectSlug": null,
+      "publishedAt": "2026-01-04",
+      "wordCount": 3000,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\jak-zdac-mature-2026.md",
+      "internalLinksOut": ["progi-punktacja"],
+      "primaryKeyword": "jak zdać maturę 2026"
+    },
+    "harmonogram-2026": {
+      "title": "Harmonogram matury 2026 — terminy i daty egzaminów dla wszystkich przedmiotów",
+      "cluster": "ORIGINAL",
+      "category": "AKTUALNOSCI",
+      "subjectSlug": null,
+      "publishedAt": "2025-01-15",
+      "wordCount": 2200,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\harmonogram-2026.md",
+      "internalLinksOut": [],
+      "primaryKeyword": "harmonogram matury 2026"
+    },
+    "progi-punktacja": {
+      "title": "Ile procent na maturze, żeby zdać? Progi, punktacja i warunki w 2026 roku",
+      "cluster": "ORIGINAL",
+      "category": "PORADNIK",
+      "subjectSlug": null,
+      "publishedAt": "2026-01-06",
+      "wordCount": 2600,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\progi-punktacja.md",
+      "internalLinksOut": [],
+      "primaryKeyword": "ile procent na maturze żeby zdać"
+    },
+    "jak-wyglada-przebiega-matura": {
+      "title": "Jak wygląda egzamin maturalny krok po kroku — przebieg, zasady, procedury",
+      "cluster": "ORIGINAL",
+      "category": "PORADNIK",
+      "subjectSlug": null,
+      "publishedAt": "2026-01-08",
+      "wordCount": 3000,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\jak-wyglada-przebiega-matura.md",
+      "internalLinksOut": [],
+      "primaryKeyword": "jak wygląda egzamin maturalny"
+    },
+    "jak-przygotowac-sie-do-matury": {
+      "title": "Jak przygotować się do matury 2026 — plan, metody i konkretne kroki",
+      "cluster": "ORIGINAL",
+      "category": "PORADNIK",
+      "subjectSlug": null,
+      "publishedAt": "2026-01-10",
+      "wordCount": 3200,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\jak-przygotowac-sie-do-matury.md",
+      "internalLinksOut": [],
+      "primaryKeyword": "jak przygotować się do matury 2026"
+    },
+    "wyniki-matur": {
+      "title": "Wyniki matur 2026 — kiedy, gdzie sprawdzić i co dalej",
+      "cluster": "ORIGINAL",
+      "category": "PORADNIK",
+      "subjectSlug": null,
+      "publishedAt": "2026-01-14",
+      "wordCount": 3000,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\wyniki-matur.md",
+      "internalLinksOut": [],
+      "primaryKeyword": "wyniki matur 2026"
+    },
+    "jak-pisac-wypracowanie-maturalne": {
+      "title": "Jak napisać wypracowanie maturalne — kompletny przewodnik (pp i pr)",
+      "cluster": "A",
+      "category": "STRATEGIA",
+      "subjectSlug": "polski",
+      "publishedAt": "2026-05-21",
+      "wordCount": 2963,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\jak-pisac-wypracowanie-maturalne.md",
+      "internalLinksOut": ["progi-punktacja", "jak-wyglada-przebiega-matura", "harmonogram-2026", "jak-przygotowac-sie-do-matury"],
+      "primaryKeyword": "jak napisać wypracowanie maturalne"
+    },
+    "rozprawka-angielski-matura": {
+      "title": "Rozprawka po angielsku na maturze — szablon i frazy CKE",
+      "cluster": "A",
+      "category": "STRATEGIA",
+      "subjectSlug": "angielski",
+      "publishedAt": "2026-05-21",
+      "wordCount": 3066,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\rozprawka-angielski-matura.md",
+      "internalLinksOut": ["progi-punktacja", "jak-pisac-wypracowanie-maturalne", "jak-przygotowac-sie-do-matury", "jak-wyglada-przebiega-matura"],
+      "primaryKeyword": "rozprawka angielski matura"
+    },
+    "jak-przygotowac-sie-z-matematyki": {
+      "title": "Jak przygotować się do matury z matematyki — plan tematyczny",
+      "cluster": "B",
+      "category": "PORADNIK",
+      "subjectSlug": "matematyka",
+      "publishedAt": "2026-05-21",
+      "wordCount": 3300,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\jak-przygotowac-sie-z-matematyki.md",
+      "internalLinksOut": ["jak-przygotowac-sie-do-matury", "jak-wyglada-przebiega-matura", "harmonogram-2026", "progi-punktacja"],
+      "primaryKeyword": "jak przygotować się do matury z matematyki"
+    },
+    "jak-przygotowac-sie-z-polskiego": {
+      "title": "Jak przygotować się do matury z polskiego — plan 6-miesięczny",
+      "cluster": "B",
+      "category": "PORADNIK",
+      "subjectSlug": "polski",
+      "publishedAt": "2026-05-21",
+      "wordCount": 3352,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\jak-przygotowac-sie-z-polskiego.md",
+      "internalLinksOut": ["progi-punktacja", "harmonogram-2026", "jak-pisac-wypracowanie-maturalne", "jak-zdac-mature-2026"],
+      "primaryKeyword": "jak przygotować się do matury z polskiego"
+    },
+    "wzory-matematyczne-matura-pdf": {
+      "title": "Wzory matematyczne na maturze — pełna ściąga (PDF)",
+      "cluster": "F",
+      "category": "PORADNIK",
+      "subjectSlug": "matematyka",
+      "publishedAt": "2026-05-22",
+      "wordCount": 2385,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\wzory-matematyczne-matura-pdf.md",
+      "internalLinksOut": ["jak-przygotowac-sie-z-matematyki", "jak-wyglada-przebiega-matura", "harmonogram-2026", "progi-punktacja", "jak-zdac-mature-2026"],
+      "primaryKeyword": "wzory matematyczne matura"
+    },
+    "email-formalny-angielski-matura": {
+      "title": "E-mail formalny po angielsku — szablon na 10/10 punktów",
+      "cluster": "A",
+      "category": "STRATEGIA",
+      "subjectSlug": "angielski",
+      "publishedAt": "2026-05-22",
+      "wordCount": 2371,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\email-formalny-angielski-matura.md",
+      "internalLinksOut": ["rozprawka-angielski-matura", "jak-pisac-wypracowanie-maturalne", "progi-punktacja", "jak-wyglada-przebiega-matura", "jak-przygotowac-sie-do-matury"],
+      "primaryKeyword": "email angielski matura"
+    },
+    "konteksty-w-wypracowaniu": {
+      "title": "Konteksty w wypracowaniu maturalnym — jakie wybierać, ile cytować",
+      "cluster": "A",
+      "category": "STRATEGIA",
+      "subjectSlug": "polski",
+      "publishedAt": "2026-05-22",
+      "wordCount": 2622,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\konteksty-w-wypracowaniu.md",
+      "internalLinksOut": ["jak-pisac-wypracowanie-maturalne", "ustny-polski-pula-jawna-2026", "srodki-stylistyczne-polski", "jak-przygotowac-sie-z-polskiego", "progi-punktacja"],
+      "primaryKeyword": "konteksty wypracowanie maturalne"
+    },
+    "wypracowanie-polski-pp-struktura": {
+      "title": "Wypracowanie z polskiego pp — schemat akapitów punktowanych przez CKE",
+      "cluster": "A",
+      "category": "STRATEGIA",
+      "subjectSlug": "polski",
+      "publishedAt": "2026-05-22",
+      "wordCount": 2568,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\wypracowanie-polski-pp-struktura.md",
+      "internalLinksOut": ["progi-punktacja", "konteksty-w-wypracowaniu", "srodki-stylistyczne-polski", "jak-pisac-wypracowanie-maturalne", "jak-przygotowac-sie-z-polskiego"],
+      "primaryKeyword": "wypracowanie polski pp schemat"
+    },
+    "wypracowanie-polski-pr-rozprawka": {
+      "title": "Wypracowanie rozszerzone z polskiego — jak ugryźć temat interpretacyjny",
+      "cluster": "A",
+      "category": "STRATEGIA",
+      "subjectSlug": "polski",
+      "publishedAt": "2026-05-22",
+      "wordCount": 2789,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\wypracowanie-polski-pr-rozprawka.md",
+      "internalLinksOut": ["konteksty-w-wypracowaniu", "srodki-stylistyczne-polski", "wypracowanie-polski-pp-struktura", "jak-pisac-wypracowanie-maturalne", "jak-przygotowac-sie-z-polskiego"],
+      "primaryKeyword": "wypracowanie polski rozszerzony"
+    },
+    "zadania-otwarte-matematyka-strategia": {
+      "title": "Zadania otwarte z matematyki — jak zdobywać punkty częściowe",
+      "cluster": "B",
+      "category": "STRATEGIA",
+      "subjectSlug": "matematyka",
+      "publishedAt": "2026-05-22",
+      "wordCount": 2674,
+      "filePath": "D:\\matury-online.pl\\frontend\\src\\content\\blog\\zadania-otwarte-matematyka-strategia.md",
+      "internalLinksOut": ["jak-przygotowac-sie-z-matematyki", "wzory-matematyczne-matura-pdf", "jak-wyglada-przebiega-matura", "wyniki-matur", "progi-punktacja"],
+      "primaryKeyword": "zadania otwarte matematyka matura"
+    }
+  }
+}

@@ -232,7 +232,8 @@ curl -s -G -H "Authorization: Bearer $MATURY_API_BEARER" \
   "$MATURY_API_BASE/api/internal/news-image-candidates"
 ```
 
-2. **Obejrzyj `viewUrl` kandydatów** (`curl <viewUrl> -o /tmp/c.jpg`, potem **Read** `/tmp/c.jpg`).
+2. **Obejrzyj zdjęcia** przez NASZ proxy (pole `proxyPath`), nie wprost z Pexels:
+   `curl -s -H "Authorization: Bearer $MATURY_API_BEARER" "$MATURY_API_BASE<proxyPath>" -o /tmp/c.jpg`, potem **Read** `/tmp/c.jpg`.
 3. Wybierz JEDNEGO: białi/europejscy nastolatkowie/młodzi dorośli ALBO sam obiekt
    (lab, książki, tablica). Odrzuć dzieci, osoby nieeuropejskie, słabą jakość.
 4. Zapisz wybrane na S3 i odbierz stabilny URL:

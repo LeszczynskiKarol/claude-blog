@@ -119,6 +119,28 @@ $newlyPublished = $publishedAfter | Where-Object { $_ -notin $publishedBefore }
 
 if ($newlyPublished.Count -gt 0) {
     Write-Log "Newly published this run: $($newlyPublished -join ', ')"
+
+    # Auto-fetch a stock hero image (Pexels) for each new post and write it into
+    # the post's .md frontmatter. Runs in the matury-online backend project.
+    $BackendDir = 'D:\matury-online.pl\backend'
+    if (Test-Path $BackendDir) {
+        foreach ($slug in $newlyPublished) {
+            Write-Log "Fetching hero image for: $slug"
+            try {
+                $imgOut = & npm.cmd --prefix $BackendDir run blog:fetch-images -- $slug 2>&1
+                foreach ($line in $imgOut) {
+                    Add-Content -Path $LogFile -Value "  [img] $line" -Encoding UTF8
+                }
+                Write-Log "Hero image step done for: $slug"
+            }
+            catch {
+                Write-Log "WARN: hero image fetch failed for $slug : $_"
+            }
+        }
+    } else {
+        Write-Log "WARN: backend dir not found ($BackendDir) — skipping hero images"
+    }
+
     foreach ($slug in $newlyPublished) {
         Write-Log "Sending Slack new-post notification for: $slug"
         Send-SlackNewPost -PostSlug $slug -ProjectDir $ProjectDir

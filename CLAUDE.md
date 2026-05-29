@@ -30,7 +30,7 @@ odpala `claude -p "dalej"` codziennie — musisz działać autonomicznie.
 ## Struktura projektu
 
 ```
-D:\claude-blog\
+D:\claude-blog-matury-online\
 ├── CLAUDE.md             ← ten plik (auto-load przez Claude Code)
 ├── README.md             ← dla człowieka
 ├── config.json           ← ścieżka outputu + meta projektu (read-only z punktu CC)
@@ -216,6 +216,38 @@ Treść — patrz sekcje jakości niżej. Długość: `topic.target_words ± 20%
 **Write** do `<output_path>/<topic.id>.md` (pełna absolutna ścieżka
 z `config.output_path`).
 
+### 6.5. Dobór zdjęcia nagłówkowego — TWOIM wzrokiem (na subskrypcji, NIE API)
+
+Każdy post dostaje zdjęcie z Pexels, które **sam wybierasz oglądając kandydatów**
+(backend nie używa płatnego AI-vision). Wymaga env: `$MATURY_API_BASE`
+(np. `https://www.matury-online.pl` lub `https://api.torweb.pl` na testy) i
+`$MATURY_API_BEARER`. Jeśli env brak — pomiń ten krok (post zostaje bez zdjęcia).
+
+1. Pobierz kandydatów (query: 2-4 ang. słowa wg przedmiotu/tematu — `chemia`→
+   „chemistry laboratory", `polski`→„books reading", ogólny→„students studying"):
+
+```bash
+curl -s -G -H "Authorization: Bearer $MATURY_API_BEARER" \
+  --data-urlencode "query=european students studying" --data-urlencode "max=8" \
+  "$MATURY_API_BASE/api/internal/news-image-candidates"
+```
+
+2. **Obejrzyj `viewUrl` kandydatów** (`curl <viewUrl> -o /tmp/c.jpg`, potem **Read** `/tmp/c.jpg`).
+3. Wybierz JEDNEGO: białi/europejscy nastolatkowie/młodzi dorośli ALBO sam obiekt
+   (lab, książki, tablica). Odrzuć dzieci, osoby nieeuropejskie, słabą jakość.
+4. Zapisz wybrane na S3 i odbierz stabilny URL:
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $MATURY_API_BEARER" -H "Content-Type: application/json" \
+  -d '{"slug":"<topic.id>","webpUrl":"<webpUrl wybranego>","author":"<author>","sourceUrl":"<sourceUrl>","photoId":<photoId>}' \
+  "$MATURY_API_BASE/api/internal/store-blog-image"
+```
+
+Odpowiedź: `{heroImage, heroImageAuthor, heroImageLicense, heroImageLicenseUrl, heroImageSourceUrl}`.
+
+5. **Dopisz te pola do frontmattera** posta (Edit/Write .md) — patrz §B. Gdy nic
+   nie pasuje albo brak env → pomiń, zostaw bez `heroImage`.
+
 ### 7. Update stanu — OBIE listy
 
 **Read** `blog_topics.json`, znajdź topic po `id`, zmień:
@@ -311,6 +343,17 @@ każdy punkt. Wyłącznie potem **Write**.
 - `subjectSlug` — jeśli `topic.subjectSlug` to `null`, ZUPEŁNIE pomiń
   linijkę (nie wpisuj `null` — schema Astro/Zod może mieć z tym
   problem, lepiej `.optional()`)
+- **`heroImage*`** (opcjonalne, z kroku §6.5) — jeśli dobrałeś zdjęcie, dopisz
+  pola zwrócone przez `/api/internal/store-blog-image`, każde jako string w
+  cudzysłowie:
+  ```yaml
+  heroImage: "https://...s3...blog/<slug>-....webp"
+  heroImageAuthor: "Imię Nazwisko"
+  heroImageLicense: "Pexels"
+  heroImageLicenseUrl: "https://www.pexels.com/license/"
+  heroImageSourceUrl: "https://www.pexels.com/photo/...-12345/"
+  ```
+  Gdy nie dobrałeś zdjęcia — pomiń wszystkie te linijki.
 
 ### C. Struktura treści
 

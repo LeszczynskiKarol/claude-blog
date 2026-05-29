@@ -120,26 +120,11 @@ $newlyPublished = $publishedAfter | Where-Object { $_ -notin $publishedBefore }
 if ($newlyPublished.Count -gt 0) {
     Write-Log "Newly published this run: $($newlyPublished -join ', ')"
 
-    # Auto-fetch a stock hero image (Pexels) for each new post and write it into
-    # the post's .md frontmatter. Runs in the matury-online backend project.
-    $BackendDir = 'D:\matury-online.pl\backend'
-    if (Test-Path $BackendDir) {
-        foreach ($slug in $newlyPublished) {
-            Write-Log "Fetching hero image for: $slug"
-            try {
-                $imgOut = & npm.cmd --prefix $BackendDir run blog:fetch-images -- $slug 2>&1
-                foreach ($line in $imgOut) {
-                    Add-Content -Path $LogFile -Value "  [img] $line" -Encoding UTF8
-                }
-                Write-Log "Hero image step done for: $slug"
-            }
-            catch {
-                Write-Log "WARN: hero image fetch failed for $slug : $_"
-            }
-        }
-    } else {
-        Write-Log "WARN: backend dir not found ($BackendDir) — skipping hero images"
-    }
+    # Hero images are now chosen DURING post generation by the Claude session
+    # itself (it views Pexels candidates with its own vision — on the
+    # subscription, not paid API — and writes heroImage* into the .md
+    # frontmatter via /api/internal/store-blog-image). See CLAUDE.md §Zdjęcie.
+    # So there is no separate API-vision image step here anymore.
 
     foreach ($slug in $newlyPublished) {
         Write-Log "Sending Slack new-post notification for: $slug"

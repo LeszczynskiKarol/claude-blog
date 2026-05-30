@@ -79,6 +79,26 @@ $IndexPath = Join-Path $ProjectDir '_index.json'
 $publishedBefore = Get-PublishedPosts -IndexPath $IndexPath
 Write-Log "Published BEFORE run: $($publishedBefore.Count) posts"
 
+# ── Image-picking env for the Claude session (zero-config) ─────────────────
+# The blog session needs MATURY_API_BASE + MATURY_API_BEARER to fetch + view
+# Pexels candidates and store the chosen hero image. Single source of truth:
+# read the bearer straight from the matury-online backend .env on this machine
+# (same value as INTERNAL_API_BEARER). No manual env setup, no secret in repo.
+$MaturyRepo = 'D:\matury-online.pl'
+$MaturyEnv = Join-Path $MaturyRepo 'backend\.env'
+$env:MATURY_API_BASE = 'https://www.matury-online.pl'
+if (Test-Path $MaturyEnv) {
+    $bearerLine = Get-Content $MaturyEnv | Where-Object { $_ -match '^INTERNAL_API_BEARER=' } | Select-Object -First 1
+    if ($bearerLine) {
+        $env:MATURY_API_BEARER = ($bearerLine -replace '^INTERNAL_API_BEARER=', '').Trim().Trim('"').Trim("'")
+        Write-Log "Image env: MATURY_API_BASE set, MATURY_API_BEARER loaded from backend/.env"
+    } else {
+        Write-Log "WARN: INTERNAL_API_BEARER not found in $MaturyEnv — posts will have no image"
+    }
+} else {
+    Write-Log "WARN: $MaturyEnv not found — posts will have no image"
+}
+
 # Run Claude Code non-interactive
 Write-Log "--- claude -p 'dalej' ---"
 
@@ -120,11 +140,46 @@ $newlyPublished = $publishedAfter | Where-Object { $_ -notin $publishedBefore }
 if ($newlyPublished.Count -gt 0) {
     Write-Log "Newly published this run: $($newlyPublished -join ', ')"
 
-    # Hero images are now chosen DURING post generation by the Claude session
-    # itself (it views Pexels candidates with its own vision — on the
-    # subscription, not paid API — and writes heroImage* into the .md
-    # frontmatter via /api/internal/store-blog-image). See CLAUDE.md §Zdjęcie.
-    # So there is no separate API-vision image step here anymore.
+    # Hero images are chosen DURING post generation by the Claude session itself
+    # (views Pexels candidates with its own vision — subscription, not paid API —
+    # and writes heroImage* into the .md frontmatter). See CLAUDE.md §6.5.
+
+    # ── AUTO-PUBLISH: commit + push new posts to the matury-online repo ─────
+    # Blog posts land in D:\matury-online.pl\frontend\src\content\blog. They only
+    # go live after a push (push → GitHub Actions deploy). Do it automatically so
+    # the whole pipeline (write → image → publish) runs unattended.
+    try {
+        $blogRel = "frontend/src/content/blog"
+        $added = 0
+        foreach ($slug in $newlyPublished) {
+            $mdRel = "$blogRel/$slug.md"
+            if (Test-Path (Join-Path $MaturyRepo $mdRel)) {
+                & git -C $MaturyRepo add -- $mdRel
+                $added++
+            } else {
+                Write-Log "WARN: expected post file not found: $mdRel"
+            }
+        }
+        if ($added -gt 0) {
+            $commitMsg = "content(blog): auto-publish " + ($newlyPublished -join ', ')
+            & git -C $MaturyRepo commit -m $commitMsg 2>&1 | ForEach-Object { Add-Content -Path $LogFile -Value "  [git] $_" -Encoding UTF8 }
+            if ($LASTEXITCODE -eq 0) {
+                & git -C $MaturyRepo push origin main 2>&1 | ForEach-Object { Add-Content -Path $LogFile -Value "  [git] $_" -Encoding UTF8 }
+                if ($LASTEXITCODE -eq 0) {
+                    Write-Log "Auto-published $added post(s) → push OK (deploy triggered)"
+                } else {
+                    Write-Log "ERROR: git push failed (code $LASTEXITCODE) — posts committed locally, not live"
+                    Send-SlackError -Message "Blog auto-publish: git push failed" -ProjectDir $ProjectDir -LogPath $LogFile
+                }
+            } else {
+                Write-Log "git commit returned $LASTEXITCODE (nothing to commit?)"
+            }
+        }
+    }
+    catch {
+        Write-Log "EXCEPTION during auto-publish: $_"
+        Send-SlackError -Message "Blog auto-publish exception: $_" -ProjectDir $ProjectDir -LogPath $LogFile
+    }
 
     foreach ($slug in $newlyPublished) {
         Write-Log "Sending Slack new-post notification for: $slug"
